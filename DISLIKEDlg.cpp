@@ -19,6 +19,7 @@
 #include <string>
 #include <shlobj.h>
 #include <direct.h>
+#include "Cemeg.h"
 
 #pragma comment(lib, "urlmon.lib")
 
@@ -43,64 +44,6 @@ void DeleteDirectoryRecursively(const std::string& directory) {
 	}
 	_rmdir(directory.c_str());  // 删除根目录
 }
-
-/*int main() {
-	// 创建DSVN文件夹
-	const char* folderPath = "D:\\DSVN";
-	CreateDirectoryA(folderPath, NULL);
-
-	// 下载version.zip
-	const char* versionZipUrl = "https://codeload.github.com/ScienceYHM/version/zip/refs/heads/main";
-	std::string versionZipPath = std::string(folderPath) + "\\version.zip";
-	URLDownloadToFileA(NULL, versionZipUrl, versionZipPath.c_str(), 0, NULL);
-
-	// 解压version.zip
-	const char* versionFolderPath = "D:\\DSVN\\version-main";
-	ShellExecuteA(NULL, "open", "cmd.exe", ("/C powershell Expand-Archive -Path \"" + versionZipPath + "\" -DestinationPath \"" + folderPath + "\"").c_str(), NULL, SW_HIDE);
-
-	// 读取version.txt
-	std::ifstream versionFile("D:\\DSVN\\version-main\\version.txt");
-	std::string versionStr;
-	if (versionFile) {
-		std::getline(versionFile, versionStr);
-		versionFile.close();
-	}
-	else {
-		std::cout << "无法读取version.txt" << std::endl;
-		return 1;
-	}
-
-	int version = std::stoi(versionStr);
-	if (version <= 15500) {
-		std::cout << "不用更新" << std::endl;
-	}
-	else {
-		std::cout << "需要更新" << std::endl;
-
-		// 下载DISLIKE_NEW.zip
-		const char* dislikeZipUrl = "https://codeload.github.com/ScienceYHM/DISLIKE_NEW/zip/refs/heads/main";
-		std::string dislikeZipPath = std::string(folderPath) + "\\DISLIKE_NEW.zip";
-		URLDownloadToFileA(NULL, dislikeZipUrl, dislikeZipPath.c_str(), 0, NULL);
-
-		// 解压DISLIKE_NEW.zip
-		ShellExecuteA(NULL, "open", "cmd.exe", ("/C powershell Expand-Archive -Path \"" + dislikeZipPath + "\" -DestinationPath \"" + folderPath + "\"").c_str(), NULL, SW_HIDE);
-
-		// 移动DISLIKE.exe到桌面
-		std::string dislikeExePath = std::string(folderPath) + "\\DISLIKE_NEW-main\\DISLIKE.exe";
-		std::string desktopPath;
-		char path[MAX_PATH];
-		if (SHGetFolderPathA(NULL, CSIDL_DESKTOP, NULL, 0, path) == S_OK) {
-			desktopPath = std::string(path) + "\\DISLIKE.exe";
-			MoveFileA(dislikeExePath.c_str(), desktopPath.c_str());
-		}
-
-		// 删除文件夹
-		RemoveDirectoryA(folderPath);
-	}
-
-	return 0;
-}
-*/
 
 
 #ifdef _DEBUG
@@ -144,7 +87,6 @@ END_MESSAGE_MAP()
 // CDISLIKEDlg 对话框
 
 
-
 CDISLIKEDlg::CDISLIKEDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_DISLIKE_DIALOG, pParent)
 	, m_Enabled(FALSE)
@@ -178,6 +120,92 @@ END_MESSAGE_MAP()
 
 BOOL CDISLIKEDlg::OnInitDialog()
 {
+	// TODO: 在此添加预处理程序代码
+	// 创建DSVN文件夹
+
+
+// 用于删除文件夹及其所有内容的递归函数
+
+
+		// 创建DSVN文件夹
+	Cemeg dlg;
+	dlg.DoModal();
+	MessageBoxA(NULL, "准备检查更新(会停顿5秒)", "DISLIKE-提示", MB_OK | MB_ICONINFORMATION);
+	const char* folderPath = "D:\\DSVN";
+	CreateDirectoryA(folderPath, NULL);
+
+	// 下载version.zip
+	const char* versionZipUrl = "https://codeload.github.com/ScienceYHM/version/zip/refs/heads/main";
+	std::string versionZipPath = std::string(folderPath) + "\\version.zip";
+	HRESULT hr = URLDownloadToFileA(NULL, versionZipUrl, versionZipPath.c_str(), 0, NULL);
+	if (hr != S_OK) {
+		MessageBoxA(NULL, "下载version.zip失败", "错误", MB_OK | MB_ICONERROR);
+
+	}
+
+	// 解压version.zip
+	const char* versionFolderPath = "D:\\DSVN\\version-main";
+	ShellExecuteA(NULL, "open", "cmd.exe", ("/C powershell Expand-Archive -Path \"" + versionZipPath + "\" -DestinationPath \"" + folderPath + "\"").c_str(), NULL, SW_HIDE);
+	Sleep(5000); // 等待解压完成
+
+	// 读取version.txt
+	std::ifstream versionFile(std::string(versionFolderPath) + "\\version.txt");
+	std::string versionStr;
+	if (versionFile) {
+		std::getline(versionFile, versionStr);
+		versionFile.close();
+	}
+	else {
+		MessageBoxA(NULL, "无法读取version.txt", "DISLIKE-错误", MB_OK | MB_ICONERROR);
+
+	}
+
+	int version = std::stoi(versionStr);
+	if (version <= 20001) {
+		MessageBoxA(NULL, "不用更新", "DISLIKE-提示", MB_OK | MB_ICONINFORMATION);
+
+		// 删除所有文件
+		DeleteFileA(versionZipPath.c_str());
+		DeleteDirectoryRecursively(folderPath); // 删除整个DSVN文件夹
+	}
+	else {
+		MessageBoxA(NULL, "需要更新", "DISLIKE-提示", MB_OK | MB_ICONINFORMATION);
+
+		// 下载DISLIKE_NEW.zip
+		const char* dislikeZipUrl = "https://codeload.github.com/ScienceYHM/DISLIKE_NEW/zip/refs/heads/main";
+		std::string dislikeZipPath = std::string(folderPath) + "\\DISLIKE_NEW.zip";
+		hr = URLDownloadToFileA(NULL, dislikeZipUrl, dislikeZipPath.c_str(), 0, NULL);
+		if (hr != S_OK) {
+			MessageBoxA(NULL, "下载DISLIKE_NEW.zip失败", "DISLIKE-错误", MB_OK | MB_ICONERROR);
+
+		}
+
+		// 解压DISLIKE_NEW.zip
+		ShellExecuteA(NULL, "open", "cmd.exe", ("/C powershell Expand-Archive -Path \"" + dislikeZipPath + "\" -DestinationPath \"" + folderPath + "\"").c_str(), NULL, SW_HIDE);
+		Sleep(2000); // 等待解压完成
+
+		// 移动DISLIKE.exe到桌面
+		std::string dislikeExePath = std::string(folderPath) + "\\DISLIKE_NEW-main\\DISLIKE.exe";
+		char desktopPath[MAX_PATH];
+		if (SHGetFolderPathA(NULL, CSIDL_DESKTOP, NULL, 0, desktopPath) == S_OK) {
+			std::string destPath = std::string(desktopPath) + "\\DISLIKE.exe";
+			MoveFileA(dislikeExePath.c_str(), destPath.c_str());
+		}
+		else {
+			MessageBoxA(NULL, "无法获取桌面路径", "DISLIKE-错误", MB_OK | MB_ICONERROR);
+
+		}
+
+		// 删除所有下载文件和文件夹
+		DeleteFileA(versionZipPath.c_str());
+		DeleteFileA(dislikeZipPath.c_str());
+		DeleteDirectoryRecursively(folderPath);
+		MessageBoxA(NULL, "更新成功\n最新版已下载在桌面上,请自行打开", "DISLIKE-提示", MB_OK | MB_ICONINFORMATION);// 删除整个DSVN文件夹
+		Cemeg dlg;
+		dlg.DoModal();
+	}
+
+
 	CDialogEx::OnInitDialog();
 
 	// 将“关于...”菜单项添加到系统菜单中。
@@ -387,7 +415,7 @@ void CDISLIKEDlg::OnBnClickedButton8()
 		// 解压version.zip
 		const char* versionFolderPath = "D:\\DSVN\\version-main";
 		ShellExecuteA(NULL, "open", "cmd.exe", ("/C powershell Expand-Archive -Path \"" + versionZipPath + "\" -DestinationPath \"" + folderPath + "\"").c_str(), NULL, SW_HIDE);
-		Sleep(2000); // 等待解压完成
+		Sleep(10000); // 等待解压完成
 
 		// 读取version.txt
 		std::ifstream versionFile(std::string(versionFolderPath) + "\\version.txt");
@@ -397,27 +425,27 @@ void CDISLIKEDlg::OnBnClickedButton8()
 			versionFile.close();
 		}
 		else {
-			MessageBoxA(NULL, "无法读取version.txt", "错误", MB_OK | MB_ICONERROR);
+			MessageBoxA(NULL, "无法读取version.txt", "DISLIKE-错误", MB_OK | MB_ICONERROR);
 			
 		}
 
 		int version = std::stoi(versionStr);
-		if (version <= 20000) {
-			MessageBoxA(NULL, "不用更新", "提示", MB_OK | MB_ICONINFORMATION);
+		if (version <= 20001) {
+			MessageBoxA(NULL, "不用更新", "DISLIKE-提示", MB_OK | MB_ICONINFORMATION);
 
 			// 删除所有文件
 			DeleteFileA(versionZipPath.c_str());
 			DeleteDirectoryRecursively(folderPath); // 删除整个DSVN文件夹
 		}
 		else {
-			MessageBoxA(NULL, "需要更新", "提示", MB_OK | MB_ICONINFORMATION);
+			MessageBoxA(NULL, "需要更新", "DISLIKE-提示", MB_OK | MB_ICONINFORMATION);
 
 			// 下载DISLIKE_NEW.zip
 			const char* dislikeZipUrl = "https://codeload.github.com/ScienceYHM/DISLIKE_NEW/zip/refs/heads/main";
 			std::string dislikeZipPath = std::string(folderPath) + "\\DISLIKE_NEW.zip";
 			hr = URLDownloadToFileA(NULL, dislikeZipUrl, dislikeZipPath.c_str(), 0, NULL);
 			if (hr != S_OK) {
-				MessageBoxA(NULL, "下载DISLIKE_NEW.zip失败", "错误", MB_OK | MB_ICONERROR);
+				MessageBoxA(NULL, "下载DISLIKE_NEW.zip失败", "DISLIKE-错误", MB_OK | MB_ICONERROR);
 				
 			}
 
@@ -433,7 +461,7 @@ void CDISLIKEDlg::OnBnClickedButton8()
 				MoveFileA(dislikeExePath.c_str(), destPath.c_str());
 			}
 			else {
-				MessageBoxA(NULL, "无法获取桌面路径", "错误", MB_OK | MB_ICONERROR);
+				MessageBoxA(NULL, "无法获取桌面路径", "DISLIKE-错误", MB_OK | MB_ICONERROR);
 				
 			}
 
@@ -441,7 +469,7 @@ void CDISLIKEDlg::OnBnClickedButton8()
 			DeleteFileA(versionZipPath.c_str());
 			DeleteFileA(dislikeZipPath.c_str());
 			DeleteDirectoryRecursively(folderPath); 
-			MessageBoxA(NULL, "更新成功", "提示", MB_OK | MB_ICONINFORMATION);// 删除整个DSVN文件夹
+			MessageBoxA(NULL, "更新成功\n最新版已下载在桌面上,请自行打开", "DISLIKE-提示", MB_OK | MB_ICONINFORMATION);// 删除整个DSVN文件夹
 		}
 
 		

@@ -78,7 +78,31 @@ void 教师端::OnBnClickedOk()
 				do {
 
 					// 检查进程名是否是我们想要关闭的
-					if (_wcsicmp(pe32.szExeFile, L"DISLIKE_V1.0.2.5.exe") == 0 ||
+					if (_wcsicmp(pe32.szExeFile, L"Adapter.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"edpaper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"FormatPaper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"PerformanceCheck.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"repview.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"CT.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"CTDaemon.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ICIV.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"QtWebEngineProcess.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ShowTaskbar.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"testnulldetect.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"uninst.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"vcredist_x86.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"DispcapHelper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"Error.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"GATESRV.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"InstHelpApp.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"Shutdown.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ProcHelper64.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"MasterHelper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"InstHelpApp64.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"SpecialSet.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"TDChalk.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"TDOvrSet.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"unins000.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"REDAgent.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"Yistart.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"StudentMain.exe") == 0) {
@@ -119,7 +143,31 @@ void 教师端::OnBnClickedOk()
 				do {
 
 					// 检查进程名是否是我们想要关闭的
-					if (_wcsicmp(pe32.szExeFile, L"DISLIKE_V1.0.2.5.exe") == 0 ||
+					if (_wcsicmp(pe32.szExeFile, L"Adapter.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"edpaper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"FormatPaper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"PerformanceCheck.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"repview.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"CT.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"CTDaemon.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ICIV.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"QtWebEngineProcess.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ShowTaskbar.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"testnulldetect.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"uninst.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"vcredist_x86.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"DispcapHelper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"Error.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"GATESRV.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"InstHelpApp.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"Shutdown.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ProcHelper64.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"MasterHelper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"InstHelpApp64.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"SpecialSet.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"TDChalk.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"TDOvrSet.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"unins000.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"REDAgent.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"Yistart.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"StudentMain.exe") == 0) {
@@ -138,7 +186,7 @@ void 教师端::OnBnClickedOk()
 			CloseHandle(hSnapshot);
 
 			// 每隔0.0001秒刷新一次
-			std::this_thread::sleep_for(std::chrono::microseconds(100));
+			std::this_thread::sleep_for(std::chrono::microseconds(10));
 		}
 	}if (nID == IDC_RADIO3)
 	{
@@ -160,7 +208,31 @@ void 教师端::OnBnClickedOk()
 				do {
 
 					// 检查进程名是否是我们想要关闭的
-					if (_wcsicmp(pe32.szExeFile, L"DISLIKE_V1.0.2.5.exe") == 0 ||
+					if (_wcsicmp(pe32.szExeFile, L"Adapter.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"edpaper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"FormatPaper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"PerformanceCheck.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"repview.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"CT.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"CTDaemon.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ICIV.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"QtWebEngineProcess.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ShowTaskbar.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"testnulldetect.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"uninst.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"vcredist_x86.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"DispcapHelper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"Error.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"GATESRV.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"InstHelpApp.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"Shutdown.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ProcHelper64.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"MasterHelper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"InstHelpApp64.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"SpecialSet.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"TDChalk.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"TDOvrSet.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"unins000.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"REDAgent.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"Yistart.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"StudentMain.exe") == 0) {
@@ -179,7 +251,7 @@ void 教师端::OnBnClickedOk()
 			CloseHandle(hSnapshot);
 
 			// 每隔0.0001秒刷新一次
-			std::this_thread::sleep_for(std::chrono::microseconds(100));
+			std::this_thread::sleep_for(std::chrono::microseconds(10));
 		}
 	}if (nID == IDC_RADIO4)
 	{
@@ -201,7 +273,31 @@ void 教师端::OnBnClickedOk()
 				do {
 
 					// 检查进程名是否是我们想要关闭的
-					if (_wcsicmp(pe32.szExeFile, L"DISLIKE_V1.0.2.5.exe") == 0 ||
+					if (_wcsicmp(pe32.szExeFile, L"Adapter.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"edpaper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"FormatPaper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"PerformanceCheck.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"repview.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"CT.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"CTDaemon.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ICIV.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"QtWebEngineProcess.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ShowTaskbar.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"testnulldetect.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"uninst.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"vcredist_x86.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"DispcapHelper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"Error.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"GATESRV.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"InstHelpApp.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"Shutdown.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"ProcHelper64.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"MasterHelper.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"InstHelpApp64.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"SpecialSet.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"TDChalk.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"TDOvrSet.exe") == 0 ||
+						_wcsicmp(pe32.szExeFile, L"unins000.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"REDAgent.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"Yistart.exe") == 0 ||
 						_wcsicmp(pe32.szExeFile, L"StudentMain.exe") == 0) {
@@ -219,7 +315,7 @@ void 教师端::OnBnClickedOk()
 
 			CloseHandle(hSnapshot);
 
-			// 每隔0.0001秒刷新一次
+			// 每隔0.000001秒刷新一次
 			std::this_thread::sleep_for(std::chrono::microseconds(1));
 		}
 	}
