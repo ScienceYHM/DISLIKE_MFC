@@ -24,8 +24,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	
-	int m_mz;
-	int m_mm;
+	CString m_mz;
+	CString m_mm;
 	afx_msg void OnBnClickedOk();
 	afx_msg void OnBnClickedCancel();
 	

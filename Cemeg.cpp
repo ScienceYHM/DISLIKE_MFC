@@ -14,8 +14,8 @@ IMPLEMENT_DYNAMIC(Cemeg, CDialog)
 Cemeg::Cemeg(CWnd* pParent /*=nullptr*/)
 	: CDialog(IDD_DIALOG4, pParent)
 	
-	, m_mz(0)
-	, m_mm(0)
+	, m_mz()
+	, m_mm()
 {
 
 }
@@ -49,8 +49,8 @@ void Cemeg::OnBnClickedOk()
 	// TODO: 在此添加控件通知处理程序代码
 	CDialog::OnOK();
 	UpdateData();
-	if (m_mz == 1) {
-		if (m_mm == 142857) {
+	if (m_mz == "ScienceYHM") {
+		if (m_mm == "ywz030103010301") {
 			MessageBoxA(NULL, "即将进入程序", "DISLIKE-提示", MB_OK | MB_ICONINFORMATION);
 		}
 		else {

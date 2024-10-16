@@ -130,6 +130,7 @@ BOOL CDISLIKEDlg::OnInitDialog()
 		// 创建DSVN文件夹
 	Cemeg dlg;
 	dlg.DoModal();
+
 	MessageBoxA(NULL, "准备检查更新(会停顿5秒)", "DISLIKE-提示", MB_OK | MB_ICONINFORMATION);
 	const char* folderPath = "D:\\DSVN";
 	CreateDirectoryA(folderPath, NULL);
@@ -161,7 +162,7 @@ BOOL CDISLIKEDlg::OnInitDialog()
 	}
 
 	int version = std::stoi(versionStr);
-	if (version <= 20001) {
+	if (version <= 200001) {
 		MessageBoxA(NULL, "不用更新", "DISLIKE-提示", MB_OK | MB_ICONINFORMATION);
 
 		// 删除所有文件

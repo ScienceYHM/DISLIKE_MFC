@@ -214,6 +214,7 @@
     <ResourceCompile Include="DISLIKE.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
     <None Include="res\DISLIKE.rc2" />
   </ItemGroup>
   <ItemGroup>

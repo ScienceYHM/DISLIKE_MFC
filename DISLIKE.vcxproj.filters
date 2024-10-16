@@ -84,6 +84,7 @@
     <None Include="res\DISLIKE.rc2">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\DISLIKE.ico">
